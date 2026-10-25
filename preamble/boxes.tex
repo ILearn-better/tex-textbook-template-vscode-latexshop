@@ -1,0 +1,70 @@
+% ============================================================
+%  boxes.tex —— 讲义提示框
+%
+%  example  例题    \begin{example}{标题}  ...  \end{example}
+%  exercise 练习    \begin{exercise}{标题} ...  \end{exercise}
+%  definition 定义  \begin{definition}[标题] ... \end{definition}
+%  note     注意    \begin{note}[标题] ... \end{note}
+%  method   方法总结 \begin{method}[标题] ... \end{method}
+%  solution 解答（无框）\begin{solution} ... \end{solution}
+%  analysis 分析（无框）\begin{analysis} ... \end{analysis}
+% ============================================================
+
+\tcbset{
+  handoutbox/.style = {
+    enhanced, breakable,
+    boxrule = 0.6pt, arc = 1.5pt,
+    left = 6pt, right = 6pt, top = 4pt, bottom = 4pt,
+    toptitle = 2pt, bottomtitle = 2pt,
+    fonttitle = \heiti\small, coltitle = white,
+  },
+}
+
+% ---------- 例题 ----------
+\newtcolorbox[auto counter, number within = section]{example}[2][]{
+  handoutbox,
+  colback = boxblue, colframe = mainblue, colbacktitle = mainblue,
+  title = {例题~\thetcbcounter\quad #2},
+  #1
+}
+
+% ---------- 练习 ----------
+\newtcolorbox[auto counter, number within = section]{exercise}[2][]{
+  handoutbox,
+  colback = boxgreen, colframe = exgreen, colbacktitle = exgreen,
+  title = {练习~\thetcbcounter\quad #2},
+  #1
+}
+
+% ---------- 定义 ----------
+\newtcolorbox{definition}[1][]{
+  handoutbox,
+  colback = boxviolet, colframe = defviolet, colbacktitle = defviolet,
+  title = {定义\ifblank{#1}{}{\quad #1}},
+}
+
+% ---------- 注意 / 易错提醒 ----------
+\newtcolorbox{note}[1][]{
+  handoutbox,
+  colback = boxred, colframe = notered, colbacktitle = notered,
+  title = {注意\ifblank{#1}{}{\quad #1}},
+}
+
+% ---------- 方法总结 ----------
+\newtcolorbox{method}[1][]{
+  handoutbox,
+  colback = boxgray, colframe = methodgray, colbacktitle = methodgray,
+  title = {方法总结\ifblank{#1}{}{\quad #1}},
+}
+
+% ---------- 解答（无框，首行缩进 2em）----------
+\newenvironment{solution}
+  {\par\vspace{0.2em}\setlength{\parindent}{2em}%
+   \noindent\hspace*{2em}{\heiti 解：}\ignorespaces}
+  {\par}
+
+% ---------- 分析（无框）----------
+\newenvironment{analysis}
+  {\par\vspace{0.1em}\setlength{\parindent}{2em}%
+   \noindent\hspace*{2em}{\heiti 分析：}\ignorespaces}
+  {\par}

@@ -1,0 +1,74 @@
+% ============================================================
+%  macros.tex —— 数学符号与常用命令
+% ============================================================
+
+% ---------- 数集 ----------
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Rstar}{\mathbb{R}^{*}}
+
+% ---------- 集合 ----------
+\newcommand{\set}[1]{\left\{ #1 \right\}}                    % 列举式集合
+\newcommand{\setof}[2]{\left\{ #1 \mid #2 \right\}}          % 描述式集合
+\newcommand{\setcomp}[2][U]{\complement_{#1} #2}             % 补集
+\newcommand{\card}[1]{\left| #1 \right|}                     % 集合元素个数
+
+% ---------- 绝对值、范数、取整 ----------
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+
+% ---------- 区间 ----------
+\newcommand{\intcc}[2]{\left[ #1,\,#2 \right]}               % 闭区间
+\newcommand{\intoo}[2]{\left( #1,\,#2 \right)}               % 开区间
+\newcommand{\intco}[2]{\left[ #1,\,#2 \right)}               % 左闭右开
+\newcommand{\intoc}[2]{\left( #1,\,#2 \right]}               % 左开右闭
+
+% ---------- 角、三角形、向量 ----------
+\newcommand{\degree}{\ensuremath{^{\circ}}}
+\newcommand{\vect}[1]{\overrightarrow{#1}}
+\newcommand{\vecb}[1]{\boldsymbol{#1}}
+\newcommand{\para}{\mathrel{/\!/}}                           % 平行
+
+% ---------- 微积分与常用记号 ----------
+\newcommand{\diff}{\mathrm{d}}
+\newcommand{\dx}{\,\mathrm{d}x}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\limn}{\lim_{n\to\infty}}
+\newcommand{\limx}[1]{\lim_{x\to #1}}
+
+% ---------- 排版辅助 ----------
+\newcommand{\blank}[1][2cm]{\underline{\hspace{#1}}}         % 填空横线
+\newcommand{\points}[1]{\hfill\normalfont\small（#1 分）}     % 分值
+\newcommand{\key}[1]{\textbf{#1}}                            % 答案强调
+
+% ---------- 插图辅助 ----------
+% 单图：\fig[占版心宽度比例]{文件名(不含路径/扩展名也可)}{图题}{标签}
+% 例：  \fig[0.6]{demo-parabola}{二次函数的图象}{fig:parabola}
+\newcommand{\fig}[4][0.75]{%
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1\linewidth]{#2}%
+    \caption{#3}%
+    \label{#4}%
+  \end{figure}%
+}
+
+% 并排两图：\figpair[单图宽度比例]{左文件}{左说明}{右文件}{右说明}{总图题}{标签}
+\newcommand{\figpair}[7][0.48]{%
+  \begin{figure}[H]
+    \centering
+    \begin{minipage}[t]{#1\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{#2}\\[2pt]{\small #3}
+    \end{minipage}\hfill
+    \begin{minipage}[t]{#1\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{#4}\\[2pt]{\small #5}
+    \end{minipage}
+    \caption{#6}\label{#7}
+  \end{figure}%
+}

@@ -1,0 +1,20 @@
+# LaTeX 编译中间文件
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.xdv
+
+# 由 TeX Live / LaTeX Workshop 生成的临时文件
+latexindent*.log
+__latexindent_temp.tex

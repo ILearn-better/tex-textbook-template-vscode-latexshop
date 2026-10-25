@@ -1,0 +1,49 @@
+% !TeX program = xelatex
+% !TeX root = main.tex
+% ============================================================
+%  高中数学讲义 · 主文件
+%
+%  编译： latexmk -xelatex main.tex
+%         VS Code 中 Ctrl+Alt+B（保存时也会自动编译）
+%
+%  目录结构：
+%    main.tex              主文件（只放结构，不写正文）
+%    preamble/colors.tex   配色（最先加载）
+%    preamble/packages.tex 宏包
+%    preamble/style.tex    版式、页眉页脚、标题样式、列表、图号
+%    preamble/macros.tex   数学符号与常用命令
+%    preamble/boxes.tex    例题 / 练习 / 定义 / 注意 / 方法总结 等提示框
+%    chapters/             正文，一章一个文件
+%    images/               插图
+% ============================================================
+\documentclass[11pt,a4paper,fontset=windows]{ctexart}
+
+\input{preamble/colors}
+\input{preamble/packages}
+\input{preamble/style}
+\input{preamble/macros}
+\input{preamble/boxes}
+
+\begin{document}
+
+% ---------------- 讲义标题区 ----------------
+\begin{center}
+  {\heiti\zihao{2} 高中数学讲义}\\[0.8em]
+  {\kaishu\zihao{4} 第一章\quad 集合与常用逻辑用语}\\[1.2em]
+  {\small 姓名\blank[3cm]\quad 班级\blank[2cm]\quad 日期\blank[2cm]}
+\end{center}
+
+\vspace{0.4em}
+{\color{mainblue}\noindent\rule{\linewidth}{0.8pt}}
+\vspace{0.8em}
+
+% ---------------- 正文 ----------------
+\input{chapters/ch01-sets}
+
+% ---------------- 插图示例（可删） ----------------
+\input{chapters/figdemo}
+
+% ---------------- 参考答案 ----------------
+\input{chapters/answers}
+
+\end{document}

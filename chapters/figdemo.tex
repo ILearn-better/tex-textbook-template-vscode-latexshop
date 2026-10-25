@@ -1,0 +1,57 @@
+% ============================================================
+%  插图与表格示例
+%  不喜欢这页的话，把 main.tex 里的 \input{chapters/figdemo} 删掉即可
+% ============================================================
+
+\section{插图与表格的写法}
+
+\subsection{方法一：插入外部图片}
+
+把图片文件放进 \texttt{images} 目录，正文里只写文件名，不写路径。XeLaTeX 下推荐 \texttt{PDF}（矢量，最清晰）和 \texttt{PNG}（位图，可透明），\texttt{JPG} 也可用，不建议 \texttt{EPS}。
+
+\fig[0.62]{demo-parabola}{二次函数 $y=x^{2}-2x-3$ 的图象}{fig:parabola}
+
+由图 \ref{fig:parabola} 可见，抛物线开口向上，顶点为 $(1,-4)$，与 $x$ 轴交于 $(-1,0)$ 和 $(3,0)$．
+
+\begin{method}[图片宽度的控制]
+\texttt{\textbackslash fig} 的第一个可选参数是相对版心宽度的比例：\texttt{[0.5]} 表示占半行宽，\texttt{[1.0]} 表示占满版心．文字较多的页面建议不超过 \texttt{[0.8]}．
+\end{method}
+
+\subsection{方法二：用 TikZ 直接画（数学图形首选）}
+
+几何图形、函数图象、韦恩图这类示意图，用 TikZ 画比截图更清晰，缩放不失真，颜色和字号也能和正文统一．
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[scale=1.15, >=Stealth]
+    \draw[->] (-2.3,0) -- (2.5,0) node[below] {$x$};
+    \draw[->] (0,-0.5) -- (0,2.6) node[left] {$y$};
+    \draw[thick, mainblue, domain=-1.55:1.55, samples=100]
+      plot (\x, {\x*\x}) node[right] {$y=x^{2}$};
+    \node[below left] at (0,0) {$O$};
+  \end{tikzpicture}
+  \caption{用 TikZ 绘制的 $y=x^{2}$ 图象}
+  \label{fig:tikz}
+\end{figure}
+
+\subsection{方法三：并排两张图}
+
+\figpair{demo-parabola}{$y=x^{2}-2x-3$}{demo-parabola}{对比用同图示例}{并排插图示例}{fig:pair}
+
+\subsection{表格}
+
+\begin{table}[H]
+  \centering
+  \caption{集合与元素的关系}
+  \label{tab:demo}
+  \begin{tabular}{ccc}
+    \toprule
+    $a$ & $b$ & $a+b$ \\
+    \midrule
+    1 & 2 & 3 \\
+    4 & 5 & 9 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+表 \ref{tab:demo} 中的三线表由 \texttt{booktabs} 宏包的 \verb|\toprule|、\verb|\midrule|、\verb|\bottomrule| 构成，比默认的表格线更适合教材排版．

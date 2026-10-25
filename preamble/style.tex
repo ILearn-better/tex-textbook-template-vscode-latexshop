@@ -1,0 +1,92 @@
+% ============================================================
+%  style.tex —— 版式、页眉页脚、标题样式、列表
+% ============================================================
+
+% ---------- 版心 ----------
+\geometry{
+  a4paper,
+  top=2.4cm, bottom=2.4cm,
+  left=2.2cm, right=2.2cm,
+  headheight=15pt, headsep=0.55cm, footskip=1.1cm,
+}
+
+% ---------- 段落与行距 ----------
+\linespread{1.32}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.28em plus 0.1em minus 0.1em}
+
+% ---------- 字体细节 ----------
+% 让 ①②③④ 这类带圈数字归入中文字体，避免缺字
+\xeCJKDeclareCharClass{CJK}{"2460 -> "24FF}
+
+% 中文强调用楷体（黑体正文之外的常规做法）
+\renewcommand{\emph}[1]{{\kaishu #1}}
+
+% ---------- 配色见 preamble/colors.tex（最先加载）----------
+
+% ---------- 页眉页脚 ----------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\kaishu 高中数学讲义}
+\fancyhead[R]{\small\kaishu\rightmark}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[C]{\small\thepage}%
+  \renewcommand{\headrulewidth}{0pt}%
+}
+
+% ---------- 标题样式（用 ctex 原生接口，不引 titlesec）----------
+\ctexset{
+  section = {
+    format     = \heiti\zihao{4}\color{mainblue},
+    name       = {,、},
+    number     = \arabic{section},
+    aftername  = {},
+    beforeskip = 1.6ex plus .3ex minus .2ex,
+    afterskip  = 1.0ex plus .2ex,
+  },
+  subsection = {
+    format     = \heiti\zihao{5}\color{mainblue},
+    number     = \arabic{section}.\arabic{subsection},
+    aftername  = \enspace,
+    beforeskip = 1.2ex plus .2ex minus .2ex,
+    afterskip  = 0.6ex plus .1ex,
+  },
+  subsubsection = {
+    format     = \heiti\zihao{-5},
+    number     = \arabic{section}.\arabic{subsection}.\arabic{subsubsection},
+    aftername  = \enspace,
+  },
+}
+
+% ---------- 列表 ----------
+\setlist[enumerate,1]{label=（\arabic*）, leftmargin=2.8em, itemsep=0.12em, topsep=0.25em}
+\setlist[enumerate,2]{label=(\arabic*),  leftmargin=2.3em, itemsep=0.10em, topsep=0.20em}
+\setlist[itemize,1]{label=$\bullet$, leftmargin=1.8em, itemsep=0.10em, topsep=0.25em}
+
+% ---------- 选择题选项环境 ----------
+% 用法： \begin{choices} \item A选项 \item B选项 ... \end{choices}
+\newenvironment{choices}
+  {\par\vspace{0.05em}%
+   \begin{enumerate}[label=（\Alph*）, leftmargin=3.0em, itemsep=0.08em, topsep=0.12em]}
+  {\end{enumerate}}
+
+% ---------- 插图 ----------
+% 图片统一放 images\ 目录，引用时只写文件名，不写路径
+\graphicspath{{images/}}
+
+% 图、表编号跟随章节：图 1.1、图 1.2、表 1.1 ...
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+
+\captionsetup{
+  font          = small,
+  labelsep      = quad,
+  justification = centering,
+  skip          = 4pt,
+}
+
