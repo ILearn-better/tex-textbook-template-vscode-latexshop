@@ -23,9 +23,10 @@ latexmk -xelatex main.tex
 ├── chapters/           正文，一章一个文件
 ├── images/             插图
 ├── .latexmkrc          命令行 latexmk 的 XeLaTeX 配置
-├── 结构说明.md          完整使用文档
-└── main.pdf            示例输出（4 页讲义 + 插图示例）
+└── 结构说明.md          完整使用文档
 ```
+
+仓库只存源文件，编译产物（`main.pdf` 及各类中间文件）不纳入版本控制，克隆后自行编译即可。
 
 ## 文档
 
